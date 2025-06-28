@@ -1,5 +1,5 @@
 name: flutter_icons_sk
-description: "A new Flutter package project."
+description: "A Flutter package for rendering remote SVG icons dynamically with support for multiple icon families. Built on top of flutter_svg for optimal performance and caching."
 version: 0.0.1
 repository: https://github.com/Subhendu-Kumar/flutter_icons_sk
 

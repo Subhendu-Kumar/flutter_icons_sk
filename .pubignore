@@ -1,0 +1,101 @@
+# Directories
+.dart_tool/
+.packages
+build/
+.pub-cache/
+.pub/
+coverage/
+.nyc_output/
+
+# Files
+.packages
+pubspec.lock
+*.log
+*.tmp
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Development and testing
+test/
+example/
+doc/
+docs/
+screenshots/
+assets/test/
+assets/example/
+
+# CI/CD
+.github/
+.gitlab-ci.yml
+.travis.yml
+.circleci/
+azure-pipelines.yml
+
+# Development files
+TODO.md
+DEVELOPMENT.md
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Flutter specific
+.flutter-plugins
+.flutter-plugins-dependencies
+.metadata
+ios/
+android/
+web/
+linux/
+macos/
+windows/
+
+# Analysis
+.dart_tool/package_config.json
+analysis_options.yaml
+
+# Git
+.git/
+.gitignore
+.gitattributes
+
+# Version control
+*.orig
+*.rej
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.backup
+
+# Local configuration
+local.properties
+keystore.properties
+
+# Scripts that shouldn't be published
+scripts/
+tools/
+build_scripts/
+
+# Documentation source (keep generated docs)
+doc_src/
+
+# Example apps and demos (keep if needed for package demonstration)
+# Uncomment the line below if you want to exclude the example folder
+# example/
