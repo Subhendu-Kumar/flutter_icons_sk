@@ -14,6 +14,7 @@ class MyApp extends StatelessWidget {
       title: 'SKIcon Demo',
       theme: ThemeData(primarySwatch: Colors.blue),
       home: const MyHomePage(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
@@ -24,16 +25,7 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('SKIcon Demo'),
-        // leading: SKIcon.antdf("account-book"),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: SKIcon.antdf("account-book").copyWith(width: 16, height: 16),
-          ),
-        ],
-      ),
+      appBar: AppBar(title: const Text('SKIcon Demo')),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -46,19 +38,36 @@ class MyHomePage extends StatelessWidget {
             const SizedBox(height: 16),
             Row(
               children: [
-                // Custom size and color
-                SKIcon.antdf(
-                  "account-book",
-                ).copyWith(width: 100, height: 100, color: Colors.red),
-                const SizedBox(width: 16),
-                SKIcon.antdf(
-                  "account-book",
-                ).copyWith(width: 48, height: 48, color: Colors.amber),
-                const SizedBox(width: 16),
-                // Different families same icon
                 SKIcon.antdf(
                   "account-book",
                 ).copyWith(width: 48, height: 48, color: Colors.pink),
+                SKIcon.antdo(
+                  "aim",
+                ).copyWith(width: 48, height: 48, color: Colors.blue),
+                SKIcon.antdtt(
+                  "alert",
+                ).copyWith(width: 48, height: 48, color: Colors.green),
+                SKIcon.bootstrap(
+                  "0-circle-fill",
+                ).copyWith(width: 48, height: 48, color: Colors.yellow),
+                SKIcon.boxl(
+                  "bxl-aws",
+                ).copyWith(width: 48, height: 48, color: Colors.red),
+                SKIcon.boxr(
+                  "bx-adjust",
+                ).copyWith(width: 48, height: 48, color: Colors.orange),
+                SKIcon.boxs(
+                  "bxs-alarm",
+                ).copyWith(width: 48, height: 48, color: Colors.purple),
+                SKIcon.cssgg(
+                  "abstract",
+                ).copyWith(width: 48, height: 48, color: Colors.cyan),
+                SKIcon.feather(
+                  "activity",
+                ).copyWith(width: 48, height: 48, color: Colors.amber),
+                SKIcon.flatc("about").copyWith(width: 48, height: 48),
+                SKIcon.fontab("adn").copyWith(width: 48, height: 48),
+                SKIcon.fontar("bell").copyWith(width: 48, height: 48),
               ],
             ),
             const SizedBox(height: 32),
@@ -70,17 +79,15 @@ class MyHomePage extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('SKIcon.fa6.home'),
-                Text('SKIcon.heroicons.user'),
-                Text('SKIcon.feather.heart'),
-                Text('SKIcon.fa6brands.github'),
-                const SizedBox(height: 16),
+                Text('SKIcon.antdf("account-book")'),
+                Text('SKIcon.antdo("aim")'),
+                Text('SKIcon.flatc("about")'),
+                const SizedBox(height: 20),
                 Text('With customization:'),
-                Text('SKIcon.fa6.heart.copyWith(width: 32, color: Colors.red)'),
-                const SizedBox(height: 16),
+                Text('SKIcon.fontar("bell").copyWith(width: 48, height: 48)'),
+                const SizedBox(height: 20),
                 Text('Custom icons:'),
-                Text('SKIcon.fa6.icon("house-chimney")'),
-                Text('SKIcon.heroicons.icon("academic-cap")'),
+                Text('SKIcon.custom("icon_url")'),
               ],
             ),
             const SizedBox(height: 32),
@@ -98,30 +105,24 @@ class MyHomePage extends StatelessWidget {
                   icon: SKIcon.antdf(
                     "account-book",
                   ).copyWith(width: 16, height: 16),
-                  label: const Text('Accept'),
+                  label: const Text('Account'),
                 ),
                 ElevatedButton.icon(
                   onPressed: () {},
-                  icon: SKIcon.antdf(
-                    "account-book",
-                  ).copyWith(width: 16, height: 16),
-                  label: const Text('Cancel'),
+                  icon: SKIcon.antdo("aim").copyWith(width: 16, height: 16),
+                  label: const Text('Aim'),
                 ),
                 ElevatedButton.icon(
                   onPressed: () {},
-                  icon: SKIcon.antdf(
-                    "account-book",
-                  ).copyWith(width: 16, height: 16),
-                  label: const Text('Download'),
+                  icon: SKIcon.flatc("about").copyWith(width: 16, height: 16),
+                  label: const Text('About'),
                 ),
               ],
             ),
+            SizedBox(height: 40),
+            Text("** All the informations are updated very soon...."),
           ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        child: SKIcon.antdf("account-book").copyWith(color: Colors.white),
       ),
     );
   }
