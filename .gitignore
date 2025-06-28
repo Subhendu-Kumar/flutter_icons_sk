@@ -60,3 +60,6 @@ build/
 /example/linux/
 /example/macos/
 /example/windows/
+
+.vercel/
+.vercel

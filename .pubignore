@@ -99,3 +99,5 @@ doc_src/
 # Example apps and demos (keep if needed for package demonstration)
 # Uncomment the line below if you want to exclude the example folder
 # example/
+
+.vercel/

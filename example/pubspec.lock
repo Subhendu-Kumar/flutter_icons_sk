@@ -73,9 +73,10 @@ packages:
   flutter_icons_sk:
     dependency: "direct main"
     description:
-      path: ".."
-      relative: true
-    source: path
+      name: flutter_icons_sk
+      sha256: "81603c64b40445a699b97482848e7e58a6a31be6941f5d40ed144384b7beff12"
+      url: "https://pub.dev"
+    source: hosted
     version: "0.0.1"
   flutter_lints:
     dependency: "direct dev"

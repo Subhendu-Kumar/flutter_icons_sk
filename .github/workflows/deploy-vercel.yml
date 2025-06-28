@@ -1,0 +1,55 @@
+name: Deploy Example to Vercel
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'example/**'  # Only trigger when example folder changes
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'example/**'
+  workflow_dispatch:  # Allows manual triggering
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.32.0'  # Specify your Flutter version
+          channel: 'stable'
+          
+      - name: Enable Flutter Web
+        run: flutter config --enable-web
+        
+      - name: Install root package dependencies
+        run: flutter pub get
+        
+      - name: Install example dependencies
+        working-directory: ./example
+        run: flutter pub get
+        
+      - name: Build Flutter Web App
+        working-directory: ./example
+        run: |
+          flutter build web --release --web-renderer html
+          # Copy build output to a deployment directory
+          mkdir -p ../deploy
+          cp -r build/web/* ../deploy/
+          
+      - name: Deploy to Vercel
+        uses: amondnet/vercel-action@v25
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          working-directory: ./deploy
+          scope: ${{ secrets.VERCEL_ORG_ID }}
