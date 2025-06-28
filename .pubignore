@@ -1,5 +1,6 @@
 # Directories
 .dart_tool/
+example/.dart_tool/
 .packages
 build/
 .pub-cache/
@@ -10,12 +11,14 @@ coverage/
 # Files
 .packages
 pubspec.lock
+example/pubspec.lock
 *.log
 *.tmp
 
 # IDE
 .vscode/
 .idea/
+example/.idea/
 *.swp
 *.swo
 *~
@@ -31,7 +34,6 @@ Thumbs.db
 
 # Development and testing
 test/
-example/
 doc/
 docs/
 screenshots/
@@ -58,20 +60,30 @@ DEVELOPMENT.md
 .flutter-plugins
 .flutter-plugins-dependencies
 .metadata
+example/.metadata
 ios/
 android/
 web/
 linux/
 macos/
 windows/
+example/ios/
+example/android/
+example/web/
+example/linux/
+example/macos/
+example/windows/
+example/build/
 
 # Analysis
 .dart_tool/package_config.json
 analysis_options.yaml
+example/analysis_options.yaml
 
 # Git
 .git/
 .gitignore
+example/.gitignore
 .gitattributes
 
 # Version control

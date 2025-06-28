@@ -1,3 +1,9 @@
+## 0.0.2
+
+### Fixed
+
+- Icon rendering issue on web platforms and other issues
+
 ## 0.0.1
 
 ### Added
