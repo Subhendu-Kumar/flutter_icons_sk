@@ -1,3 +1,9 @@
+## 0.0.3
+
+### Fixed
+
+- added home page in pubspec.yaml
+
 ## 0.0.2
 
 ### Fixed
