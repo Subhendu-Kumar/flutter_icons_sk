@@ -1,3 +1,6 @@
+// File: example/lib/main.dart
+// This file is part of the flutter_icons_sk package example.
+
 import 'package:flutter/material.dart';
 import 'package:flutter_icons_sk/flutter_icons_sk.dart';
 
