@@ -40,7 +40,7 @@ jobs:
       - name: Build Flutter Web App
         working-directory: ./example
         run: |
-          flutter build web --release --web-renderer html
+          flutter build web --release
           # Copy build output to a deployment directory
           mkdir -p ../deploy
           cp -r build/web/* ../deploy/
