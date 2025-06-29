@@ -1,7 +1,12 @@
-// File: example/lib/main.dart
-// This file is part of the flutter_icons_sk package example.
+// ignore_for_file: deprecated_member_use
 
+import 'package:example/icons/icon_data_i.dart';
+import 'package:example/icons/icons.dart';
+import 'package:example/router.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:example/sidebar_item.dart';
+import 'package:example/utils/get_page_title.dart';
 import 'package:flutter_icons_sk/flutter_icons_sk.dart';
 
 void main() {
@@ -13,119 +18,206 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'SKIcon Demo',
-      theme: ThemeData(primarySwatch: Colors.blue),
-      home: const MyHomePage(),
+    return MaterialApp.router(
+      title: 'SK Icons',
+      theme: ThemeData(
+        primarySwatch: Colors.deepPurple,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+      ),
+      routerConfig: router,
       debugShowCheckedModeBanner: false,
     );
   }
 }
 
-class MyHomePage extends StatelessWidget {
-  const MyHomePage({super.key});
+class Layout extends StatefulWidget {
+  final Widget child;
+
+  const Layout({super.key, required this.child});
+
+  @override
+  State<Layout> createState() => _LayoutState();
+}
+
+class _LayoutState extends State<Layout> {
+  bool _isDrawerOpen = false;
+
+  List<SidebarItem> _buildSidebarItems(List<IconDataI> icons) {
+    return icons.map((icon) {
+      return SidebarItem(title: icon.title, route: icon.route);
+    }).toList();
+  }
+
+  // Sidebar menu items with routes
+  late final List<SidebarItem> _menuItems;
+  // [
+  //   SidebarItem(title: 'Home', route: '/'),
+  //   SidebarItem(title: 'Users', route: '/users'),
+  // ];
+
+  String _getCurrentRoute() {
+    return GoRouterState.of(context).uri.toString();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _menuItems = _buildSidebarItems(icons);
+    _menuItems.insert(
+      0,
+      SidebarItem(title: 'Home', route: '/'),
+    ); // Add Home item at the top
+  }
 
   @override
   Widget build(BuildContext context) {
+    final currentRoute = _getCurrentRoute();
+
     return Scaffold(
-      appBar: AppBar(title: const Text('SKIcon Demo')),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Text(
-              'Customized Icons:',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 16),
-            Row(
-              children: [
-                SKIcon.antdf(
-                  "account-book",
-                ).copyWith(width: 48, height: 48, color: Colors.pink),
-                SKIcon.antdo(
-                  "aim",
-                ).copyWith(width: 48, height: 48, color: Colors.blue),
-                SKIcon.antdtt(
-                  "alert",
-                ).copyWith(width: 48, height: 48, color: Colors.green),
-                SKIcon.bootstrap(
-                  "0-circle-fill",
-                ).copyWith(width: 48, height: 48, color: Colors.yellow),
-                SKIcon.boxl(
-                  "bxl-aws",
-                ).copyWith(width: 48, height: 48, color: Colors.red),
-                SKIcon.boxr(
-                  "bx-adjust",
-                ).copyWith(width: 48, height: 48, color: Colors.orange),
-                SKIcon.boxs(
-                  "bxs-alarm",
-                ).copyWith(width: 48, height: 48, color: Colors.purple),
-                SKIcon.cssgg(
-                  "abstract",
-                ).copyWith(width: 48, height: 48, color: Colors.cyan),
-                SKIcon.feather(
-                  "activity",
-                ).copyWith(width: 48, height: 48, color: Colors.amber),
-                SKIcon.flatc("about").copyWith(width: 48, height: 48),
-                SKIcon.fontab("adn").copyWith(width: 48, height: 48),
-                SKIcon.fontar("bell").copyWith(width: 48, height: 48),
-              ],
-            ),
-            const SizedBox(height: 32),
-            const Text(
-              'Usage Examples:',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 16),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text('SKIcon.antdf("account-book")'),
-                Text('SKIcon.antdo("aim")'),
-                Text('SKIcon.flatc("about")'),
-                const SizedBox(height: 20),
-                Text('With customization:'),
-                Text('SKIcon.fontar("bell").copyWith(width: 48, height: 48)'),
-                const SizedBox(height: 20),
-                Text('Custom icons:'),
-                Text('SKIcon.custom("icon_url")'),
-              ],
-            ),
-            const SizedBox(height: 32),
-            const Text(
-              'In Buttons:',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 16),
-            Wrap(
-              spacing: 16,
-              runSpacing: 16,
-              children: [
-                ElevatedButton.icon(
-                  onPressed: () {},
-                  icon: SKIcon.antdf(
-                    "account-book",
-                  ).copyWith(width: 16, height: 16),
-                  label: const Text('Account'),
-                ),
-                ElevatedButton.icon(
-                  onPressed: () {},
-                  icon: SKIcon.antdo("aim").copyWith(width: 16, height: 16),
-                  label: const Text('Aim'),
-                ),
-                ElevatedButton.icon(
-                  onPressed: () {},
-                  icon: SKIcon.flatc("about").copyWith(width: 16, height: 16),
-                  label: const Text('About'),
-                ),
-              ],
-            ),
-            SizedBox(height: 40),
-            Text("** All the informations are updated very soon...."),
-          ],
+      appBar: AppBar(
+        title: Text(
+          getPageTitle(currentRoute),
+          style: TextStyle(fontWeight: FontWeight.bold),
         ),
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        foregroundColor: Theme.of(context).colorScheme.primary,
+        elevation: 0,
+        leading: MediaQuery.of(context).size.width < 768
+            ? IconButton(
+                icon: SKIcon.cssgg(
+                  "dock-right",
+                  width: 24,
+                  height: 24,
+                  color: Theme.of(context).colorScheme.primary,
+                ),
+                onPressed: () {
+                  setState(() {
+                    _isDrawerOpen = !_isDrawerOpen;
+                  });
+                },
+              )
+            : null,
+        actions: [
+          IconButton(
+            icon: SKIcon.antdf(
+              "bell",
+              width: 24,
+              height: 24,
+              color: Colors.white,
+            ),
+            onPressed: () {},
+          ),
+          IconButton(
+            icon: SKIcon.flatc("businessman", width: 24, height: 24),
+            onPressed: () {},
+          ),
+          const SizedBox(width: 16),
+        ],
+      ),
+      body: Row(
+        children: [
+          // Sidebar
+          if (MediaQuery.of(context).size.width >= 768 || _isDrawerOpen)
+            Container(
+              width: 250,
+              color: const Color.fromARGB(255, 247, 242, 233).withOpacity(0.3),
+              child: Column(
+                children: [
+                  // Logo/Header section
+                  Container(
+                    padding: const EdgeInsets.all(16),
+                    child: Row(
+                      children: [
+                        SKIcon.antdtt(
+                          "layout",
+                          width: 32,
+                          height: 32,
+                          color: Theme.of(context).colorScheme.primary,
+                        ),
+                        const SizedBox(width: 12),
+                        Text(
+                          'SK Icons',
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: Theme.of(context).colorScheme.primary,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const Divider(height: 1),
+                  const SizedBox(height: 10),
+                  Expanded(
+                    child: ListView.builder(
+                      itemCount: _menuItems.length,
+                      itemBuilder: (context, index) {
+                        final item = _menuItems[index];
+                        final isSelected = currentRoute == item.route;
+
+                        return Container(
+                          margin: const EdgeInsets.symmetric(
+                            horizontal: 8,
+                            vertical: 2,
+                          ),
+                          decoration: BoxDecoration(
+                            color: isSelected
+                                ? Theme.of(
+                                    context,
+                                  ).colorScheme.inversePrimary.withOpacity(0.2)
+                                : Colors.transparent,
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: ListTile(
+                            title: Text(
+                              item.title,
+                              style: TextStyle(
+                                color: isSelected
+                                    ? Theme.of(context).colorScheme.primary
+                                    : Colors.grey[800],
+                                fontWeight: isSelected
+                                    ? FontWeight.w600
+                                    : FontWeight.normal,
+                              ),
+                            ),
+                            onTap: () {
+                              context.go(item.route);
+                              if (MediaQuery.of(context).size.width < 768) {
+                                setState(() {
+                                  _isDrawerOpen = false;
+                                });
+                              }
+                            },
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                ],
+              ),
+            ),
+
+          // Main content area
+          Expanded(
+            child: Stack(
+              children: [
+                // Main content
+                Container(color: Colors.white, child: widget.child),
+
+                // Overlay for mobile when drawer is open
+                if (MediaQuery.of(context).size.width < 768 && _isDrawerOpen)
+                  GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        _isDrawerOpen = false;
+                      });
+                    },
+                    child: Container(color: Colors.black.withOpacity(0.5)),
+                  ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
