@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:example/utils/utils.dart';
 import 'package:example/icons/icon_data_i.dart';
 import 'package:flutter_highlight/themes/idea.dart';
-import 'package:example/utils/get_cross_axis_count.dart';
+import 'package:flutter_icons_sk/flutter_icons_sk.dart';
 import 'package:flutter_highlight/flutter_highlight.dart';
-import 'package:example/utils/calculate_grid_height.dart';
 import 'package:example/presentation/widgets/icon_card.dart';
 import 'package:example/presentation/widgets/info_section.dart';
 
@@ -17,8 +16,20 @@ class Content extends StatefulWidget {
 }
 
 class _ContentState extends State<Content> {
+  late String query;
+
+  @override
+  void initState() {
+    super.initState();
+    query = "";
+  }
+
   @override
   Widget build(BuildContext context) {
+    final List<String> filteredIcons = widget.iconData.icons
+        .where((icon) => icon.toLowerCase().contains(query.toLowerCase()))
+        .toList();
+
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
@@ -27,7 +38,7 @@ class _ContentState extends State<Content> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(
-                width: double.infinity, // or specific width
+                width: double.infinity,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -42,18 +53,57 @@ class _ContentState extends State<Content> {
                         ),
                       ),
                     ),
-                    Container(
-                      padding: EdgeInsets.all(8),
-                      decoration: BoxDecoration(
-                        color: Colors.blue[600],
-                        borderRadius: BorderRadius.circular(8),
+                    Flexible(
+                      child: Container(
+                        padding: EdgeInsets.all(8),
+                        decoration: BoxDecoration(
+                          color: Colors.blue[100],
+                          borderRadius: BorderRadius.circular(100),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            SKIcon.flatc("info", width: 24, height: 24),
+                            SizedBox(width: 8),
+                            Text(
+                              "Click the icon box to copy the icon name",
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 14,
+                                fontWeight: FontWeight.w600,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                          ],
+                        ),
                       ),
-                      child: Text(
-                        "Click the icon box to copy the icon name",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w600,
+                    ),
+                    Flexible(
+                      child: SizedBox(
+                        width: 300,
+                        height: 40,
+                        child: TextField(
+                          decoration: InputDecoration(
+                            hintText: 'Search icons...',
+                            prefixIcon: Icon(Icons.search),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(100),
+                            ),
+                            contentPadding: EdgeInsets.symmetric(
+                              vertical: 8,
+                              horizontal: 12,
+                            ),
+                          ),
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: Color(0xFF1A1A1A),
+                          ),
+                          onChanged: (value) {
+                            setState(() {
+                              query = value;
+                            });
+                          },
                         ),
                       ),
                     ),
@@ -120,12 +170,8 @@ class _ContentState extends State<Content> {
                     ),
                     GestureDetector(
                       onTap: () {
-                        Clipboard.setData(
-                          ClipboardData(text: widget.iconData.useCase),
-                        );
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text('Use Case copied!')),
-                        );
+                        copyToClipboard(widget.iconData.useCase);
+                        showSnackBar(context, "Use Case copied!");
                       },
                       child: Icon(Icons.copy, color: Colors.white70, size: 18),
                     ),
@@ -142,29 +188,22 @@ class _ContentState extends State<Content> {
                 ),
               ),
               SizedBox(height: 10),
-              SizedBox(
-                height: calculateGridHeight(
-                  context,
-                  widget.iconData.icons.length,
-                  0.8,
+              GridView.builder(
+                physics: NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: getCrossAxisCount(context),
+                  crossAxisSpacing: 16,
+                  mainAxisSpacing: 16,
+                  childAspectRatio: 0.8,
                 ),
-                child: GridView.builder(
-                  physics: NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: getCrossAxisCount(context),
-                    crossAxisSpacing: 16,
-                    mainAxisSpacing: 16,
-                    childAspectRatio: 0.8,
-                  ),
-                  itemCount: widget.iconData.icons.length,
-                  itemBuilder: (context, index) {
-                    return IconCard(
-                      iconName: widget.iconData.icons[index],
-                      id: widget.iconData.id,
-                    );
-                  },
-                ),
+                itemCount: filteredIcons.length,
+                itemBuilder: (context, index) {
+                  return IconCard(
+                    iconName: filteredIcons[index],
+                    id: widget.iconData.id,
+                  );
+                },
               ),
             ],
           ),

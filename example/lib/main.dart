@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:example/icons/icons.dart';
+import 'package:example/utils/utils.dart';
 import 'package:go_router/go_router.dart';
 import 'package:example/router/router.dart';
 import 'package:example/icons/icon_data_i.dart';
 import 'package:example/utils/sidebar_item.dart';
-import 'package:example/utils/get_page_title.dart';
 import 'package:flutter_icons_sk/flutter_icons_sk.dart';
 
 void main() {
@@ -89,12 +89,17 @@ class _LayoutState extends State<Layout> {
         actions: [
           IconButton(
             icon: SKIcon.antdf(
-              "bell",
+              "github",
               width: 24,
               height: 24,
               color: Colors.white,
             ),
-            onPressed: () {},
+            onPressed: () {
+              copyToClipboard(
+                "https://github.com/subhendu-kumar/flutter_icons_sk",
+              );
+              showSnackBar(context, "github link copied!! (paste in browser)");
+            },
           ),
           IconButton(
             icon: SKIcon.flatc("businessman", width: 24, height: 24),
@@ -186,14 +191,12 @@ class _LayoutState extends State<Layout> {
                 ],
               ),
             ),
-
           // Main content area
           Expanded(
             child: Stack(
               children: [
                 // Main content
                 Container(color: Colors.white, child: widget.child),
-
                 // Overlay for mobile when drawer is open
                 if (MediaQuery.of(context).size.width < 768 && _isDrawerOpen)
                   GestureDetector(

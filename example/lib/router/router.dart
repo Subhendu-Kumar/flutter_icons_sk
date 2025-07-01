@@ -3,16 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:example/icons/icons.dart';
 import 'package:go_router/go_router.dart';
 import 'package:example/icons/icon_data_i.dart';
+import 'package:example/presentation/view/home.dart';
 import 'package:example/presentation/view/content.dart';
 
 List<GoRoute> _buildIconRoutes(List<IconDataI> icons) {
   return [
     // Home route first
-    GoRoute(
-      path: '/',
-      builder: (context, state) =>
-          const Scaffold(body: Center(child: Text('Home'))),
-    ),
+    GoRoute(path: '/', builder: (context, state) => const Home()),
     // Other routes mapped from icons
     ...icons.map(
       (icon) => GoRoute(
