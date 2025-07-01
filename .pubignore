@@ -1,4 +1,5 @@
 # Directories
+
 .dart_tool/
 example/.dart_tool/
 .packages
@@ -9,30 +10,34 @@ coverage/
 .nyc_output/
 
 # Files
+
 .packages
 pubspec.lock
 example/pubspec.lock
-*.log
-*.tmp
+_.log
+_.tmp
 
 # IDE
+
 .vscode/
 .idea/
 example/.idea/
-*.swp
-*.swo
-*~
+_.swp
+_.swo
+\*~
 
 # OS
-.DS_Store
+
+.DS*Store
 .DS_Store?
-._*
+.*\*
 .Spotlight-V100
 .Trashes
 ehthumbs.db
 Thumbs.db
 
 # Development and testing
+
 test/
 doc/
 docs/
@@ -41,6 +46,7 @@ assets/test/
 assets/example/
 
 # CI/CD
+
 .github/
 .gitlab-ci.yml
 .travis.yml
@@ -48,6 +54,7 @@ assets/example/
 azure-pipelines.yml
 
 # Development files
+
 TODO.md
 DEVELOPMENT.md
 .env
@@ -57,6 +64,7 @@ DEVELOPMENT.md
 .env.production
 
 # Flutter specific
+
 .flutter-plugins
 .flutter-plugins-dependencies
 .metadata
@@ -74,42 +82,55 @@ example/linux/
 example/macos/
 example/windows/
 example/build/
+example/lib/icons/
+example/lib/presentation/
+example/lib/router/
+example/lib/utils/
 
 # Analysis
+
 .dart_tool/package_config.json
 analysis_options.yaml
 example/analysis_options.yaml
 
 # Git
+
 .git/
 .gitignore
 example/.gitignore
 .gitattributes
 
 # Version control
-*.orig
-*.rej
+
+_.orig
+_.rej
 
 # Temporary files
-*.tmp
-*.temp
-*.bak
-*.backup
+
+_.tmp
+_.temp
+_.bak
+_.backup
 
 # Local configuration
+
 local.properties
 keystore.properties
 
 # Scripts that shouldn't be published
+
 scripts/
 tools/
 build_scripts/
 
 # Documentation source (keep generated docs)
+
 doc_src/
 
 # Example apps and demos (keep if needed for package demonstration)
+
 # Uncomment the line below if you want to exclude the example folder
+
 # example/
 
 .vercel/
