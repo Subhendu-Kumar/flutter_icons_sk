@@ -1,11 +1,9 @@
-// ignore_for_file: deprecated_member_use
-
-import 'package:example/icons/icon_data_i.dart';
-import 'package:example/icons/icons.dart';
-import 'package:example/router.dart';
 import 'package:flutter/material.dart';
+import 'package:example/icons/icons.dart';
 import 'package:go_router/go_router.dart';
-import 'package:example/sidebar_item.dart';
+import 'package:example/router/router.dart';
+import 'package:example/icons/icon_data_i.dart';
+import 'package:example/utils/sidebar_item.dart';
 import 'package:example/utils/get_page_title.dart';
 import 'package:flutter_icons_sk/flutter_icons_sk.dart';
 
@@ -19,7 +17,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      title: 'SK Icons',
+      title: 'flutter_icons_sk',
       theme: ThemeData(
         primarySwatch: Colors.deepPurple,
         visualDensity: VisualDensity.adaptivePlatformDensity,
@@ -41,19 +39,13 @@ class Layout extends StatefulWidget {
 
 class _LayoutState extends State<Layout> {
   bool _isDrawerOpen = false;
+  late final List<SidebarItem> _menuItems;
 
   List<SidebarItem> _buildSidebarItems(List<IconDataI> icons) {
     return icons.map((icon) {
       return SidebarItem(title: icon.title, route: icon.route);
     }).toList();
   }
-
-  // Sidebar menu items with routes
-  late final List<SidebarItem> _menuItems;
-  // [
-  //   SidebarItem(title: 'Home', route: '/'),
-  //   SidebarItem(title: 'Users', route: '/users'),
-  // ];
 
   String _getCurrentRoute() {
     return GoRouterState.of(context).uri.toString();
@@ -63,10 +55,7 @@ class _LayoutState extends State<Layout> {
   void initState() {
     super.initState();
     _menuItems = _buildSidebarItems(icons);
-    _menuItems.insert(
-      0,
-      SidebarItem(title: 'Home', route: '/'),
-    ); // Add Home item at the top
+    _menuItems.insert(0, SidebarItem(title: 'Home', route: '/'));
   }
 
   @override
@@ -120,6 +109,7 @@ class _LayoutState extends State<Layout> {
           if (MediaQuery.of(context).size.width >= 768 || _isDrawerOpen)
             Container(
               width: 250,
+              // ignore: deprecated_member_use
               color: const Color.fromARGB(255, 247, 242, 233).withOpacity(0.3),
               child: Column(
                 children: [
@@ -128,18 +118,17 @@ class _LayoutState extends State<Layout> {
                     padding: const EdgeInsets.all(16),
                     child: Row(
                       children: [
-                        SKIcon.antdtt(
-                          "layout",
+                        SKIcon.custom(
+                          "https://raw.githubusercontent.com/Subhendu-Kumar/Subhendu-Kumar/refs/heads/main/assets/flutter.svg",
                           width: 32,
                           height: 32,
-                          color: Theme.of(context).colorScheme.primary,
                         ),
                         const SizedBox(width: 12),
                         Text(
-                          'SK Icons',
+                          'flutter_icons_sk',
                           style: TextStyle(
                             fontSize: 20,
-                            fontWeight: FontWeight.bold,
+                            fontWeight: FontWeight.w500,
                             color: Theme.of(context).colorScheme.primary,
                           ),
                         ),
@@ -164,6 +153,7 @@ class _LayoutState extends State<Layout> {
                             color: isSelected
                                 ? Theme.of(
                                     context,
+                                    // ignore: deprecated_member_use
                                   ).colorScheme.inversePrimary.withOpacity(0.2)
                                 : Colors.transparent,
                             borderRadius: BorderRadius.circular(8),
@@ -212,6 +202,7 @@ class _LayoutState extends State<Layout> {
                         _isDrawerOpen = false;
                       });
                     },
+                    // ignore: deprecated_member_use
                     child: Container(color: Colors.black.withOpacity(0.5)),
                   ),
               ],

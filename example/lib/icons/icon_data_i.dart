@@ -1,3 +1,5 @@
+import 'package:example/icons/icon_data_id.dart';
+
 class IconDataI {
   final IconDataId id;
   final String title;
@@ -17,5 +19,3 @@ class IconDataI {
     required this.icons,
   });
 }
-
-enum IconDataId { antdf, antdo, antdtt }
