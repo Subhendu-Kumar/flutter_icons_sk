@@ -1,3 +1,9 @@
+## 0.1.0
+
+### Added
+
+- added sk icons web page
+
 ## 0.0.3
 
 ### Fixed

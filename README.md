@@ -9,6 +9,11 @@ A Flutter package for rendering remote SVG icons dynamically with support for mu
 - 🎯 Accessibility support
 - 📦 Lightweight and performant
 
+## website
+
+- [Visit Flutter SK Icons Web Page](https://flutter-icons-sk.vercel.app)
+- Here you can find all available icons list Family wise!!
+
 ## Usage
 
 ### Dynamic Icons by Family
@@ -102,10 +107,6 @@ SKIcon.custom(
 | Feather          | MIT               | [feathericons.com](https://feathericons.com/)                      |
 | Flat Color Icons | MIT               | [flat-color-icons](https://github.com/icons8/flat-color-icons)     |
 | Font Awesome 6   | CC BY 4.0 License | [fontawesome.com](https://fontawesome.com/)                        |
-
-## Note
-
-`All the available icons list will be updated very soon`
 
 ## Performance
 
