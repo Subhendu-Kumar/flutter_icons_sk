@@ -36,6 +36,7 @@ AppBar(
                 color: Color(0xFF2D3748),
               ),
             ),
+
             const SizedBox(height: 20),
             const Text(
               'A Flutter package for rendering remote SVG icons dynamically with support for multiple icon families. Built on top of `flutter_svg` for optimal performance and caching.',

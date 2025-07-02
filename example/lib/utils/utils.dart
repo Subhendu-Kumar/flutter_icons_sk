@@ -48,6 +48,10 @@ Widget buildIcon(IconDataId id, String iconName) {
       return SKIcon.feather(iconName, width: 24, height: 24);
     case IconDataId.flatc:
       return SKIcon.flatc(iconName, width: 24, height: 24);
+    case IconDataId.fontab:
+      return SKIcon.fontab(iconName, width: 24, height: 24);
+    case IconDataId.fontar:
+      return SKIcon.fontar(iconName, width: 24, height: 24);
   }
 }
 
@@ -73,6 +77,10 @@ String getPageTitle(String route) {
       return 'Feather Icons';
     case '/flat-color-icons':
       return 'Flat Color Icons';
+    case '/font-awesome-regular':
+      return 'Font Awesome Regular';
+    case '/font-awesome-brands':
+      return 'Font Awesome Brand';
     default:
       return 'Home';
   }

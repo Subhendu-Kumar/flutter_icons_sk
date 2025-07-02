@@ -8,4 +8,6 @@ enum IconDataId {
   boxs,
   feather,
   flatc,
+  fontab,
+  fontar,
 }
