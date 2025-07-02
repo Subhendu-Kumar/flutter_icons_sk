@@ -1,3 +1,21 @@
+## 0.2.0
+
+### New Icon Families Added
+
+- octicons icons
+- grommet icons
+- hero icons
+- ico moon free icons
+- icons8 line awesome icons
+- ion icons
+- radix icons
+- simple line icons
+- tabler icons
+- themify icons
+- typ icons
+- vs code icons
+- weather icons
+
 ## 0.1.0
 
 ### Added

@@ -51,11 +51,83 @@ enum IconFamily {
   /// Font Awesome Icons
   /// - Brands icons
   /// - Regular icons
+  /// - Solid icons TODO: will be added soon
   fontAwesomeBrands(
     "https://raw.githubusercontent.com/FortAwesome/Font-Awesome/refs/heads/6.x/svgs/brands",
   ),
   fontAwesomeRegular(
     "https://raw.githubusercontent.com/FortAwesome/Font-Awesome/refs/heads/6.x/svgs/regular",
+  ),
+
+  /// Octicons Icons
+  octiconsIcons(
+    "https://raw.githubusercontent.com/primer/octicons/refs/heads/main/icons",
+  ),
+
+  /// Grommet Icons
+  grommetIcons(
+    "https://raw.githubusercontent.com/grommet/grommet-icons/refs/heads/master/public/img",
+  ),
+
+  /// Hero Icons
+  /// - Solid Icons
+  /// - Outline Icons
+  heroIconsOutline(
+    "https://raw.githubusercontent.com/tailwindlabs/heroicons/refs/heads/master/optimized/24/outline",
+  ),
+  heroIconsSolid(
+    "https://raw.githubusercontent.com/tailwindlabs/heroicons/refs/heads/master/optimized/24/solid",
+  ),
+
+  /// IcoMoon Free Icons
+  icoMoonFreeIcons(
+    "https://raw.githubusercontent.com/Keyamoon/IcoMoon-Free/refs/heads/master/SVG",
+  ),
+
+  /// Icons8 Line Awesome Icons
+  icons8LineAwesomeIcons(
+    "https://raw.githubusercontent.com/icons8/line-awesome/refs/heads/master/svg",
+  ),
+
+  /// Ion Icons
+  ionIcons(
+    "https://raw.githubusercontent.com/ionic-team/ionicons/refs/heads/main/src/svg",
+  ),
+
+  /// Radix Icons
+  radixIcons(
+    "https://raw.githubusercontent.com/radix-ui/icons/refs/heads/master/packages/radix-icons/icons",
+  ),
+
+  /// Simple Line Icons
+  simpleLineIcons(
+    "https://raw.githubusercontent.com/thesabbir/simple-line-icons/refs/heads/master/src/svgs",
+  ),
+
+  /// Tabler Icons
+  /// - Filled icons
+  tablerIconsFilled(
+    "https://raw.githubusercontent.com/tabler/tabler-icons/refs/heads/main/icons/filled",
+  ),
+
+  /// Themify Icons
+  themifyIcons(
+    "https://raw.githubusercontent.com/lykmapipo/themify-icons/refs/heads/master/SVG",
+  ),
+
+  /// Typ Icons
+  typIcons(
+    "https://raw.githubusercontent.com/stephenhutchings/typicons.font/refs/heads/master/src/svg",
+  ),
+
+  /// VS Code Icons
+  vsCodeIcons(
+    "https://raw.githubusercontent.com/microsoft/vscode-codicons/refs/heads/main/src/icons",
+  ),
+
+  /// Weather Icons
+  weatherIcons(
+    "https://raw.githubusercontent.com/erikflowers/weather-icons/refs/heads/master/svg",
   );
 
   const IconFamily(this.baseUrl);

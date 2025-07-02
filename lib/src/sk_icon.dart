@@ -336,6 +336,260 @@ class SKIcon extends StatelessWidget {
     );
   }
 
+  /// Octicons Icons
+  static SKIcon octicon(
+    String iconName, {
+    double? width,
+    double? height,
+    Color? color,
+    String? semanticsLabel,
+  }) {
+    return SKIcon(
+      family: IconFamily.octiconsIcons,
+      iconName: iconName,
+      width: width,
+      height: height,
+      color: color,
+      semanticsLabel: semanticsLabel,
+    );
+  }
+
+  /// Grommet Icons
+  static SKIcon grommet(
+    String iconName, {
+    double? width,
+    double? height,
+    Color? color,
+    String? semanticsLabel,
+  }) {
+    return SKIcon(
+      family: IconFamily.grommetIcons,
+      iconName: iconName,
+      width: width,
+      height: height,
+      color: color,
+      semanticsLabel: semanticsLabel,
+    );
+  }
+
+  /// Hero Icons
+  /// - Outline Icons
+  /// - Solid Icons
+  static SKIcon heroo(
+    String iconName, {
+    double? width,
+    double? height,
+    Color? color,
+    String? semanticsLabel,
+  }) {
+    return SKIcon(
+      family: IconFamily.heroIconsOutline,
+      iconName: iconName,
+      width: width,
+      height: height,
+      color: color,
+      semanticsLabel: semanticsLabel,
+    );
+  }
+
+  static SKIcon heros(
+    String iconName, {
+    double? width,
+    double? height,
+    Color? color,
+    String? semanticsLabel,
+  }) {
+    return SKIcon(
+      family: IconFamily.heroIconsSolid,
+      iconName: iconName,
+      width: width,
+      height: height,
+      color: color,
+      semanticsLabel: semanticsLabel,
+    );
+  }
+
+  /// IcoMoon Free Icons
+  static SKIcon icomoon(
+    String iconName, {
+    double? width,
+    double? height,
+    Color? color,
+    String? semanticsLabel,
+  }) {
+    return SKIcon(
+      family: IconFamily.icoMoonFreeIcons,
+      iconName: iconName,
+      width: width,
+      height: height,
+      color: color,
+      semanticsLabel: semanticsLabel,
+    );
+  }
+
+  /// Icons8 Line Awesome Icons
+  static SKIcon icons8(
+    String iconName, {
+    double? width,
+    double? height,
+    Color? color,
+    String? semanticsLabel,
+  }) {
+    return SKIcon(
+      family: IconFamily.icons8LineAwesomeIcons,
+      iconName: iconName,
+      width: width,
+      height: height,
+      color: color,
+      semanticsLabel: semanticsLabel,
+    );
+  }
+
+  /// Ion Icons
+  static SKIcon ion(
+    String iconName, {
+    double? width,
+    double? height,
+    Color? color,
+    String? semanticsLabel,
+  }) {
+    return SKIcon(
+      family: IconFamily.ionIcons,
+      iconName: iconName,
+      width: width,
+      height: height,
+      color: color,
+      semanticsLabel: semanticsLabel,
+    );
+  }
+
+  /// radix Icons
+  static SKIcon radix(
+    String iconName, {
+    double? width,
+    double? height,
+    Color? color,
+    String? semanticsLabel,
+  }) {
+    return SKIcon(
+      family: IconFamily.radixIcons,
+      iconName: iconName,
+      width: width,
+      height: height,
+      color: color,
+      semanticsLabel: semanticsLabel,
+    );
+  }
+
+  /// Simple Line Icons
+  static SKIcon sline(
+    String iconName, {
+    double? width,
+    double? height,
+    Color? color,
+    String? semanticsLabel,
+  }) {
+    return SKIcon(
+      family: IconFamily.simpleLineIcons,
+      iconName: iconName,
+      width: width,
+      height: height,
+      color: color,
+      semanticsLabel: semanticsLabel,
+    );
+  }
+
+  /// Tabler Icons
+  /// - Filled icons
+  static SKIcon tabf(
+    String iconName, {
+    double? width,
+    double? height,
+    Color? color,
+    String? semanticsLabel,
+  }) {
+    return SKIcon(
+      family: IconFamily.tablerIconsFilled,
+      iconName: iconName,
+      width: width,
+      height: height,
+      color: color,
+      semanticsLabel: semanticsLabel,
+    );
+  }
+
+  /// Themify Icons
+  static SKIcon themify(
+    String iconName, {
+    double? width,
+    double? height,
+    Color? color,
+    String? semanticsLabel,
+  }) {
+    return SKIcon(
+      family: IconFamily.themifyIcons,
+      iconName: iconName,
+      width: width,
+      height: height,
+      color: color,
+      semanticsLabel: semanticsLabel,
+    );
+  }
+
+  /// Typ Icons
+  static SKIcon typ(
+    String iconName, {
+    double? width,
+    double? height,
+    Color? color,
+    String? semanticsLabel,
+  }) {
+    return SKIcon(
+      family: IconFamily.typIcons,
+      iconName: iconName,
+      width: width,
+      height: height,
+      color: color,
+      semanticsLabel: semanticsLabel,
+    );
+  }
+
+  /// VS Code Icons
+  static SKIcon vscode(
+    String iconName, {
+    double? width,
+    double? height,
+    Color? color,
+    String? semanticsLabel,
+  }) {
+    return SKIcon(
+      family: IconFamily.vsCodeIcons,
+      iconName: iconName,
+      width: width,
+      height: height,
+      color: color,
+      semanticsLabel: semanticsLabel,
+    );
+  }
+
+  /// Weather Icons
+  static SKIcon weather(
+    String iconName, {
+    double? width,
+    double? height,
+    Color? color,
+    String? semanticsLabel,
+  }) {
+    return SKIcon(
+      family: IconFamily.weatherIcons,
+      iconName: iconName,
+      width: width,
+      height: height,
+      color: color,
+      semanticsLabel: semanticsLabel,
+    );
+  }
+
   /// Create a custom icon from any URL
   static Widget custom(
     String url, {
