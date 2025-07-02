@@ -86,6 +86,8 @@ example/lib/icons/
 example/lib/presentation/
 example/lib/router/
 example/lib/utils/
+example/README.md
+example/pubspec.yaml
 
 # Analysis
 
