@@ -52,6 +52,34 @@ Widget buildIcon(IconDataId id, String iconName) {
       return SKIcon.fontab(iconName, width: 24, height: 24);
     case IconDataId.fontar:
       return SKIcon.fontar(iconName, width: 24, height: 24);
+    case IconDataId.octicon:
+      return SKIcon.octicon(iconName, width: 24, height: 24);
+    case IconDataId.grommet:
+      return SKIcon.grommet(iconName, width: 24, height: 24);
+    case IconDataId.heroo:
+      return SKIcon.heroo(iconName, width: 24, height: 24);
+    case IconDataId.heros:
+      return SKIcon.heros(iconName, width: 24, height: 24);
+    case IconDataId.icomoon:
+      return SKIcon.icomoon(iconName, width: 24, height: 24);
+    case IconDataId.icons8:
+      return SKIcon.icons8(iconName, width: 24, height: 24);
+    case IconDataId.ion:
+      return SKIcon.ion(iconName, width: 24, height: 24);
+    case IconDataId.radix:
+      return SKIcon.radix(iconName, width: 24, height: 24);
+    case IconDataId.sline:
+      return SKIcon.sline(iconName, width: 24, height: 24);
+    case IconDataId.tabf:
+      return SKIcon.tabf(iconName, width: 24, height: 24);
+    case IconDataId.themify:
+      return SKIcon.themify(iconName, width: 24, height: 24);
+    case IconDataId.typ:
+      return SKIcon.typ(iconName, width: 24, height: 24);
+    case IconDataId.vscode:
+      return SKIcon.vscode(iconName, width: 24, height: 24);
+    case IconDataId.weather:
+      return SKIcon.weather(iconName, width: 24, height: 24);
   }
 }
 
@@ -81,6 +109,30 @@ String getPageTitle(String route) {
       return 'Font Awesome Regular';
     case '/font-awesome-brands':
       return 'Font Awesome Brand';
+    case '/github-octicons-icons':
+      return 'Github Octicons icons';
+    case '/grommet-icons':
+      return 'Grommet Icons';
+    case '/hero-icons-outline':
+      return 'Heroicons Outline';
+    case '/hero-icons-solid':
+      return 'Heroicons Solid';
+    case '/ico-moon-free':
+      return 'IcoMoon Free';
+    case '/redix-ui-icons':
+      return 'Radix UI Icons';
+    case '/simple-line-icons':
+      return 'Simple Line Icons';
+    case '/tabler-icons-filled':
+      return 'Tabler Icons Filled';
+    case '/themify-icons':
+      return 'Themify Icons';
+    case '/typicons':
+      return 'Typicons';
+    case '/vscode-icons':
+      return 'VS Code Icons';
+    case '/weather-icons':
+      return 'Weather Icons';
     default:
       return 'Home';
   }
