@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:example/icons/icons.dart';
 import 'package:example/utils/utils.dart';
@@ -108,107 +110,116 @@ class _LayoutState extends State<Layout> {
           const SizedBox(width: 16),
         ],
       ),
-      body: Row(
+      body: Stack(
         children: [
-          // Sidebar
-          if (MediaQuery.of(context).size.width >= 768 || _isDrawerOpen)
-            Container(
-              width: 250,
-              // ignore: deprecated_member_use
-              color: const Color.fromARGB(255, 247, 242, 233).withOpacity(0.3),
-              child: Column(
-                children: [
-                  // Logo/Header section
-                  Container(
-                    padding: const EdgeInsets.all(16),
-                    child: Row(
-                      children: [
-                        SKIcon.custom(
-                          "https://raw.githubusercontent.com/Subhendu-Kumar/Subhendu-Kumar/refs/heads/main/assets/flutter.svg",
-                          width: 32,
-                          height: 32,
-                        ),
-                        const SizedBox(width: 12),
-                        Text(
-                          'flutter_icons_sk',
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.w500,
-                            color: Theme.of(context).colorScheme.primary,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  const Divider(height: 1),
-                  const SizedBox(height: 10),
-                  Expanded(
-                    child: ListView.builder(
-                      itemCount: _menuItems.length,
-                      itemBuilder: (context, index) {
-                        final item = _menuItems[index];
-                        final isSelected = currentRoute == item.route;
-
-                        return Container(
-                          margin: const EdgeInsets.symmetric(
-                            horizontal: 8,
-                            vertical: 2,
-                          ),
-                          decoration: BoxDecoration(
-                            color: isSelected
-                                ? Theme.of(
-                                    context,
-                                    // ignore: deprecated_member_use
-                                  ).colorScheme.inversePrimary.withOpacity(0.2)
-                                : Colors.transparent,
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          child: ListTile(
-                            title: Text(
-                              item.title,
-                              style: TextStyle(
-                                color: isSelected
-                                    ? Theme.of(context).colorScheme.primary
-                                    : Colors.grey[800],
-                                fontWeight: isSelected
-                                    ? FontWeight.w600
-                                    : FontWeight.normal,
-                              ),
-                            ),
-                            onTap: () {
-                              context.go(item.route);
-                              if (MediaQuery.of(context).size.width < 768) {
-                                setState(() {
-                                  _isDrawerOpen = false;
-                                });
-                              }
-                            },
-                          ),
-                        );
-                      },
-                    ),
-                  ),
-                ],
+          // Main content
+          Row(
+            children: [
+              if (MediaQuery.of(context).size.width >= 768)
+                _buildSidebar(context, currentRoute),
+              Expanded(
+                child: Container(color: Colors.white, child: widget.child),
               ),
+            ],
+          ),
+          // Sidebar overlay on small screens
+          if (MediaQuery.of(context).size.width < 768 && _isDrawerOpen) ...[
+            // Semi-transparent overlay backdrop
+            GestureDetector(
+              onTap: () {
+                setState(() {
+                  _isDrawerOpen = false;
+                });
+              },
+              child: Container(color: Colors.black.withOpacity(0.5)),
             ),
-          // Main content area
-          Expanded(
-            child: Stack(
+            // Sidebar panel
+            Positioned(
+              top: 0,
+              bottom: 0,
+              left: 0,
+              width: 250,
+              child: _buildSidebar(context, currentRoute),
+            ),
+          ],
+        ],
+      ),
+    );
+  }
+
+  Widget _buildSidebar(BuildContext context, String currentRoute) {
+    return Container(
+      width: 250,
+      color: const Color.fromARGB(255, 246, 244, 250),
+      child: Column(
+        children: [
+          // Logo/Header section
+          Container(
+            padding: const EdgeInsets.all(16),
+            child: Row(
               children: [
-                // Main content
-                Container(color: Colors.white, child: widget.child),
-                // Overlay for mobile when drawer is open
-                if (MediaQuery.of(context).size.width < 768 && _isDrawerOpen)
-                  GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        _isDrawerOpen = false;
-                      });
-                    },
-                    // ignore: deprecated_member_use
-                    child: Container(color: Colors.black.withOpacity(0.5)),
+                SKIcon.custom(
+                  "https://raw.githubusercontent.com/Subhendu-Kumar/Subhendu-Kumar/refs/heads/main/assets/flutter.svg",
+                  width: 32,
+                  height: 32,
+                ),
+                const SizedBox(width: 12),
+                Text(
+                  'flutter_icons_sk',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w500,
+                    color: Theme.of(context).colorScheme.primary,
                   ),
+                ),
               ],
+            ),
+          ),
+          const Divider(height: 1),
+          const SizedBox(height: 10),
+          Expanded(
+            child: ListView.builder(
+              itemCount: _menuItems.length,
+              itemBuilder: (context, index) {
+                final item = _menuItems[index];
+                final isSelected = currentRoute == item.route;
+
+                return Container(
+                  margin: const EdgeInsets.symmetric(
+                    horizontal: 8,
+                    vertical: 2,
+                  ),
+                  decoration: BoxDecoration(
+                    color: isSelected
+                        ? Theme.of(
+                            context,
+                          ).colorScheme.inversePrimary.withOpacity(0.2)
+                        : Colors.transparent,
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: ListTile(
+                    title: Text(
+                      item.title,
+                      style: TextStyle(
+                        color: isSelected
+                            ? Theme.of(context).colorScheme.primary
+                            : Colors.grey[800],
+                        fontWeight: isSelected
+                            ? FontWeight.w600
+                            : FontWeight.w500,
+                      ),
+                    ),
+                    onTap: () {
+                      context.go(item.route);
+                      if (MediaQuery.of(context).size.width < 768) {
+                        setState(() {
+                          _isDrawerOpen = false;
+                        });
+                      }
+                    },
+                  ),
+                );
+              },
             ),
           ),
         ],

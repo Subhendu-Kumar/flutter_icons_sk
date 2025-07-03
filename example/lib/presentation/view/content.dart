@@ -53,60 +53,62 @@ class _ContentState extends State<Content> {
                         ),
                       ),
                     ),
-                    Flexible(
-                      child: Container(
-                        padding: EdgeInsets.all(8),
-                        decoration: BoxDecoration(
-                          color: Colors.blue[100],
-                          borderRadius: BorderRadius.circular(100),
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            SKIcon.flatc("info", width: 24, height: 24),
-                            SizedBox(width: 8),
-                            Text(
-                              "Click the icon box to copy the icon name",
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 14,
-                                fontWeight: FontWeight.w600,
+                    if (MediaQuery.of(context).size.width >= 1200)
+                      Flexible(
+                        child: Container(
+                          padding: EdgeInsets.all(8),
+                          decoration: BoxDecoration(
+                            color: Colors.blue[100],
+                            borderRadius: BorderRadius.circular(100),
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              SKIcon.flatc("info", width: 24, height: 24),
+                              SizedBox(width: 8),
+                              Text(
+                                "Click the icon box to copy the icon name",
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                                textAlign: TextAlign.center,
                               ),
-                              textAlign: TextAlign.center,
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-                    Flexible(
-                      child: SizedBox(
-                        width: 300,
-                        height: 40,
-                        child: TextField(
-                          decoration: InputDecoration(
-                            hintText: 'Search icons...',
-                            prefixIcon: Icon(Icons.search),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(100),
+                    if (MediaQuery.of(context).size.width >= 1024)
+                      Flexible(
+                        child: SizedBox(
+                          width: 300,
+                          height: 40,
+                          child: TextField(
+                            decoration: InputDecoration(
+                              hintText: 'Search icons...',
+                              prefixIcon: Icon(Icons.search),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(100),
+                              ),
+                              contentPadding: EdgeInsets.symmetric(
+                                vertical: 8,
+                                horizontal: 12,
+                              ),
                             ),
-                            contentPadding: EdgeInsets.symmetric(
-                              vertical: 8,
-                              horizontal: 12,
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: Color(0xFF1A1A1A),
                             ),
+                            onChanged: (value) {
+                              setState(() {
+                                query = value;
+                              });
+                            },
                           ),
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: Color(0xFF1A1A1A),
-                          ),
-                          onChanged: (value) {
-                            setState(() {
-                              query = value;
-                            });
-                          },
                         ),
                       ),
-                    ),
                   ],
                 ),
               ),
@@ -134,40 +136,46 @@ class _ContentState extends State<Content> {
               SizedBox(height: 16),
               Container(
                 width: double.infinity,
-                padding: EdgeInsets.all(20),
+                padding: EdgeInsets.all(16),
                 decoration: BoxDecoration(
                   color: Color(0xFF1E1E1E),
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          HighlightView(
-                            "import 'package:flutter_icons_sk/flutter_icons_sk.dart';",
-                            language: 'dart',
-                            theme: ideaTheme,
-                            padding: const EdgeInsets.all(6),
-                            textStyle: TextStyle(
-                              fontFamily: 'My awesome monospace font',
-                              fontSize: 14,
+                    Flexible(
+                      child: SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            HighlightView(
+                              "import 'package:flutter_icons_sk/flutter_icons_sk.dart';",
+                              language: 'dart',
+                              theme: ideaTheme,
+                              padding: const EdgeInsets.all(6),
+                              textStyle: TextStyle(
+                                fontFamily: 'My awesome monospace font',
+                                fontSize: 14,
+                              ),
                             ),
-                          ),
-                          HighlightView(
-                            widget.iconData.useCase,
-                            language: 'dart',
-                            theme: ideaTheme,
-                            padding: const EdgeInsets.all(6),
-                            textStyle: TextStyle(
-                              fontFamily: 'My awesome monospace font',
-                              fontSize: 14,
+                            HighlightView(
+                              widget.iconData.useCase,
+                              language: 'dart',
+                              theme: ideaTheme,
+                              padding: const EdgeInsets.all(6),
+                              textStyle: TextStyle(
+                                fontFamily: 'My awesome monospace font',
+                                fontSize: 14,
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
+                    SizedBox(width: 8),
                     GestureDetector(
                       onTap: () {
                         copyToClipboard(widget.iconData.useCase);

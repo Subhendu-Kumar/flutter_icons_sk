@@ -17,14 +17,27 @@ int getCrossAxisCount(BuildContext context) {
   double screenWidth = MediaQuery.of(context).size.width;
   if (screenWidth > 1200) {
     return 10;
-  } else if (screenWidth > 800) {
+  } else if (screenWidth > 900) {
     return 8;
-  } else if (screenWidth > 600) {
+  } else if (screenWidth > 768) {
     return 6;
-  } else if (screenWidth > 400) {
+  } else if (screenWidth > 610) {
     return 4;
   } else {
+    return 3;
+  }
+}
+
+int getHomePageCrossAxisCount(BuildContext context) {
+  double screenWidth = MediaQuery.of(context).size.width;
+  if (screenWidth >= 1440) {
+    return 4;
+  } else if (screenWidth > 1024) {
+    return 3;
+  } else if (screenWidth > 768) {
     return 2;
+  } else {
+    return 1;
   }
 }
 

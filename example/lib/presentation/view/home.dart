@@ -36,7 +36,6 @@ AppBar(
                 color: Color(0xFF2D3748),
               ),
             ),
-
             const SizedBox(height: 20),
             const Text(
               'A Flutter package for rendering remote SVG icons dynamically with support for multiple icon families. Built on top of `flutter_svg` for optimal performance and caching.',
@@ -60,7 +59,7 @@ AppBar(
               physics: NeverScrollableScrollPhysics(),
               shrinkWrap: true,
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 4,
+                crossAxisCount: getHomePageCrossAxisCount(context),
                 crossAxisSpacing: 16,
                 mainAxisSpacing: 16,
                 childAspectRatio: 2,
@@ -135,14 +134,20 @@ AppBar(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    codeSnippet,
-                    style: TextStyle(
-                      fontFamily: 'My awesome monospace font',
-                      fontSize: 16,
-                      color: Colors.blue,
+                  Flexible(
+                    child: SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Text(
+                        codeSnippet,
+                        style: TextStyle(
+                          fontFamily: 'My awesome monospace font',
+                          fontSize: 16,
+                          color: Colors.blue,
+                        ),
+                      ),
                     ),
                   ),
+                  SizedBox(width: 8),
                   GestureDetector(
                     onTap: () {
                       copyToClipboard(codeSnippet);
