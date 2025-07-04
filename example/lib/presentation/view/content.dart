@@ -58,19 +58,19 @@ class _ContentState extends State<Content> {
                         child: Container(
                           padding: EdgeInsets.all(8),
                           decoration: BoxDecoration(
-                            color: Colors.blue[100],
+                            color: Colors.blue[50],
                             borderRadius: BorderRadius.circular(100),
                           ),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              SKIcon.flatc("info", width: 24, height: 24),
+                              SKIcon.flatc("info", width: 20, height: 20),
                               SizedBox(width: 8),
                               Text(
                                 "Click the icon box to copy the icon name",
                                 style: TextStyle(
-                                  color: Colors.black,
+                                  color: Colors.blue[900],
                                   fontSize: 14,
                                   fontWeight: FontWeight.w600,
                                 ),
@@ -176,12 +176,12 @@ class _ContentState extends State<Content> {
                       ),
                     ),
                     SizedBox(width: 8),
-                    GestureDetector(
-                      onTap: () {
+                    IconButton(
+                      onPressed: () {
                         copyToClipboard(widget.iconData.useCase);
                         showSnackBar(context, "Use Case copied!");
                       },
-                      child: Icon(Icons.copy, color: Colors.white70, size: 18),
+                      icon: Icon(Icons.copy, color: Colors.white70, size: 18),
                     ),
                   ],
                 ),

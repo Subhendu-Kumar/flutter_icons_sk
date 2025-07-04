@@ -91,6 +91,21 @@ class _LayoutState extends State<Layout> {
         actions: [
           IconButton(
             icon: SKIcon.antdf(
+              "file-text",
+              width: 24,
+              height: 24,
+              color: Colors.white,
+            ),
+            onPressed: () {
+              copyToClipboard("https://pub.dev/packages/flutter_icons_sk");
+              showSnackBar(
+                context,
+                "pub.dev package link copied!! (paste in browser)",
+              );
+            },
+          ),
+          IconButton(
+            icon: SKIcon.antdf(
               "github",
               width: 24,
               height: 24,
@@ -154,25 +169,38 @@ class _LayoutState extends State<Layout> {
       child: Column(
         children: [
           // Logo/Header section
-          Container(
-            padding: const EdgeInsets.all(16),
-            child: Row(
-              children: [
-                SKIcon.custom(
-                  "https://raw.githubusercontent.com/Subhendu-Kumar/Subhendu-Kumar/refs/heads/main/assets/flutter.svg",
-                  width: 32,
-                  height: 32,
+          GestureDetector(
+            onTap: () {
+              context.go('/');
+              if (MediaQuery.of(context).size.width < 768) {
+                setState(() {
+                  _isDrawerOpen = false;
+                });
+              }
+            },
+            child: MouseRegion(
+              cursor: SystemMouseCursors.click,
+              child: Container(
+                padding: const EdgeInsets.all(16),
+                child: Row(
+                  children: [
+                    SKIcon.custom(
+                      "https://raw.githubusercontent.com/Subhendu-Kumar/Subhendu-Kumar/refs/heads/main/assets/flutter.svg",
+                      width: 32,
+                      height: 32,
+                    ),
+                    const SizedBox(width: 12),
+                    Text(
+                      'flutter_icons_sk',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w500,
+                        color: Theme.of(context).colorScheme.primary,
+                      ),
+                    ),
+                  ],
                 ),
-                const SizedBox(width: 12),
-                Text(
-                  'flutter_icons_sk',
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w500,
-                    color: Theme.of(context).colorScheme.primary,
-                  ),
-                ),
-              ],
+              ),
             ),
           ),
           const Divider(height: 1),

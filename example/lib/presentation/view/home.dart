@@ -69,6 +69,7 @@ AppBar(
                 IconDataI iconData = icons[index];
                 return IconSetCard(
                   id: iconData.id,
+                  route: iconData.route,
                   title: iconData.title,
                   icons: iconData.icons.take(7).toList(),
                   count: "${iconData.icons.length} icons",
@@ -100,15 +101,15 @@ AppBar(
                     style: TextStyle(
                       fontFamily: 'My awesome monospace font',
                       fontSize: 16,
-                      color: Colors.blue,
+                      color: Colors.greenAccent,
                     ),
                   ),
-                  GestureDetector(
-                    onTap: () {
+                  IconButton(
+                    onPressed: () {
                       copyToClipboard("flutter pub add flutter_icons_sk");
                       showSnackBar(context, "installation copied!");
                     },
-                    child: Icon(Icons.copy, color: Colors.white70, size: 18),
+                    icon: Icon(Icons.copy, color: Colors.white70, size: 18),
                   ),
                 ],
               ),
@@ -142,18 +143,18 @@ AppBar(
                         style: TextStyle(
                           fontFamily: 'My awesome monospace font',
                           fontSize: 16,
-                          color: Colors.blue,
+                          color: Colors.greenAccent,
                         ),
                       ),
                     ),
                   ),
                   SizedBox(width: 8),
-                  GestureDetector(
-                    onTap: () {
+                  IconButton(
+                    onPressed: () {
                       copyToClipboard(codeSnippet);
                       showSnackBar(context, "code snippet copied!");
                     },
-                    child: Icon(Icons.copy, color: Colors.white70, size: 18),
+                    icon: Icon(Icons.copy, color: Colors.white70, size: 18),
                   ),
                 ],
               ),

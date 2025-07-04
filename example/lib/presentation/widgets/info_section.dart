@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:example/utils/utils.dart';
 
 class InfoSection extends StatelessWidget {
   final String title;
@@ -27,14 +28,23 @@ class InfoSection extends StatelessWidget {
         ),
         SizedBox(width: 8),
         Flexible(
-          child: Text(
-            content,
-            style: TextStyle(
-              fontSize: 16,
-              color: title == 'License:' ? linkColor : linkColor,
-              fontWeight: FontWeight.w500,
+          child: GestureDetector(
+            onTap: () {
+              copyToClipboard(content);
+              showSnackBar(context, "$content copied!");
+            },
+            child: MouseRegion(
+              cursor: SystemMouseCursors.click,
+              child: Text(
+                content,
+                style: TextStyle(
+                  fontSize: 16,
+                  color: linkColor,
+                  fontWeight: FontWeight.w500,
+                ),
+                overflow: TextOverflow.ellipsis,
+              ),
             ),
-            overflow: TextOverflow.ellipsis,
           ),
         ),
       ],
