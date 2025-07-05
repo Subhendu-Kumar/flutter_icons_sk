@@ -1,4 +1,5 @@
 import 'package:example/main.dart';
+import 'package:example/presentation/view/search_page.dart';
 import 'package:flutter/material.dart';
 import 'package:example/icons/icons.dart';
 import 'package:go_router/go_router.dart';
@@ -8,8 +9,10 @@ import 'package:example/presentation/view/content.dart';
 
 List<GoRoute> _buildIconRoutes(List<IconDataI> icons) {
   return [
-    // Home route first
+    // Home route
     GoRoute(path: '/', builder: (context, state) => const Home()),
+    // Search route
+    GoRoute(path: '/search', builder: (context, state) => const SearchPage()),
     // Other routes mapped from icons
     ...icons.map(
       (icon) => GoRoute(

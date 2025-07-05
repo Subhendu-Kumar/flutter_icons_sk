@@ -103,6 +103,8 @@ String getPageTitle(String route) {
   switch (route) {
     case '/':
       return 'Home';
+    case '/search':
+      return 'Search Icons';
     case '/ant-design-filled':
       return 'Ant Design Filled';
     case '/ant-design-outlined':

@@ -58,6 +58,7 @@ class _LayoutState extends State<Layout> {
     super.initState();
     _menuItems = _buildSidebarItems(icons);
     _menuItems.insert(0, SidebarItem(title: 'Home', route: '/'));
+    _menuItems.insert(1, SidebarItem(title: 'Search Icons', route: '/search'));
   }
 
   @override
