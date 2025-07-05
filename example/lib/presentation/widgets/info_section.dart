@@ -30,8 +30,10 @@ class InfoSection extends StatelessWidget {
         Flexible(
           child: GestureDetector(
             onTap: () {
-              copyToClipboard(content);
-              showSnackBar(context, "$content copied!");
+              if (title == "Project:") {
+                launchUrlUtil(context, content, "Icon project Url");
+                return;
+              }
             },
             child: MouseRegion(
               cursor: SystemMouseCursors.click,

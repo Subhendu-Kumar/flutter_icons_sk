@@ -97,30 +97,32 @@ class _LayoutState extends State<Layout> {
               color: Colors.white,
             ),
             onPressed: () {
-              copyToClipboard("https://pub.dev/packages/flutter_icons_sk");
-              showSnackBar(
+              launchUrlUtil(
                 context,
-                "pub.dev package link copied!! (paste in browser)",
+                "https://pub.dev/packages/flutter_icons_sk",
+                "pub.dev package",
               );
             },
           ),
           IconButton(
-            icon: SKIcon.antdf(
-              "github",
-              width: 24,
-              height: 24,
-              color: Colors.white,
-            ),
-            onPressed: () {
-              copyToClipboard(
+            icon: SKIcon.antdf("github", width: 24, height: 24),
+            onPressed: () async {
+              launchUrlUtil(
+                context,
                 "https://github.com/subhendu-kumar/flutter_icons_sk",
+                "github",
               );
-              showSnackBar(context, "github link copied!! (paste in browser)");
             },
           ),
           IconButton(
             icon: SKIcon.flatc("businessman", width: 24, height: 24),
-            onPressed: () {},
+            onPressed: () async {
+              launchUrlUtil(
+                context,
+                "https://subhendu-kumar.github.io",
+                "author profile",
+              );
+            },
           ),
           const SizedBox(width: 16),
         ],

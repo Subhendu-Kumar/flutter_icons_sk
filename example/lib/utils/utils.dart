@@ -1,5 +1,8 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:example/icons/icon_data_id.dart';
 import 'package:flutter_icons_sk/flutter_icons_sk.dart';
 
@@ -148,5 +151,12 @@ String getPageTitle(String route) {
       return 'Weather Icons';
     default:
       return 'Home';
+  }
+}
+
+void launchUrlUtil(BuildContext context, String url, String message) async {
+  if (!await launchUrl(Uri.parse(url), mode: LaunchMode.externalApplication)) {
+    copyToClipboard(url);
+    showSnackBar(context, "$message link copied!! (paste in browser)");
   }
 }

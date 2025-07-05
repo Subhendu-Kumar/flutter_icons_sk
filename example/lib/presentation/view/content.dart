@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:example/utils/utils.dart';
 import 'package:example/icons/icon_data_i.dart';
-import 'package:flutter_highlight/themes/idea.dart';
 import 'package:flutter_icons_sk/flutter_icons_sk.dart';
-import 'package:flutter_highlight/flutter_highlight.dart';
 import 'package:example/presentation/widgets/icon_card.dart';
 import 'package:example/presentation/widgets/info_section.dart';
 
@@ -151,24 +149,26 @@ class _ContentState extends State<Content> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            HighlightView(
-                              "import 'package:flutter_icons_sk/flutter_icons_sk.dart';",
-                              language: 'dart',
-                              theme: ideaTheme,
-                              padding: const EdgeInsets.all(6),
-                              textStyle: TextStyle(
-                                fontFamily: 'My awesome monospace font',
-                                fontSize: 14,
+                            Padding(
+                              padding: const EdgeInsets.all(6.0),
+                              child: Text(
+                                "import 'package:flutter_icons_sk/flutter_icons_sk.dart';",
+                                style: TextStyle(
+                                  fontFamily: 'My awesome monospace font',
+                                  fontSize: 14,
+                                  color: Colors.greenAccent,
+                                ),
                               ),
                             ),
-                            HighlightView(
-                              widget.iconData.useCase,
-                              language: 'dart',
-                              theme: ideaTheme,
-                              padding: const EdgeInsets.all(6),
-                              textStyle: TextStyle(
-                                fontFamily: 'My awesome monospace font',
-                                fontSize: 14,
+                            Padding(
+                              padding: const EdgeInsets.all(6.0),
+                              child: Text(
+                                widget.iconData.useCase,
+                                style: TextStyle(
+                                  fontFamily: 'My awesome monospace font',
+                                  fontSize: 14,
+                                  color: Colors.greenAccent,
+                                ),
                               ),
                             ),
                           ],
